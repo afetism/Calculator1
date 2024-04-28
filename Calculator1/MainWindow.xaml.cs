@@ -66,6 +66,7 @@ namespace Calculator1
 
         public bool isFirstOperation { get; set; } = true;
         public bool IsClickOperator { get; set; } = false;
+
         private void Button_Equal(object sender, RoutedEventArgs e)
         {
 

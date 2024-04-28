@@ -9,31 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ApplicationDefinition Remove="App.xaml" />
+    <None Remove="Images\pngaaa.com-4875945.png" />
+    <None Remove="Images\pngkey.com-mobile-menu-icon-png-3321462.png" />
+    <None Remove="Images\Windows_Calculator_icon.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="AssemblyInfo.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Images\menu1.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="AssemblyInfo.cs">
+    <Content Include="Images\pngaaa.com-4875945.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pngkey.com-mobile-menu-icon-png-3321462.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Windows_Calculator_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <DesignData Include="App.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Images\menu1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+  
 
 </Project>
