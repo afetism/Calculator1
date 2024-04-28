@@ -51,7 +51,16 @@ namespace Calculator1
             }
                 
                 
-               } 
+        } 
+
+        void ReturStartPoint()
+        {
+            LabelDown="0";
+            LabelUp="0";
+            BufferLabel.Visibility=Visibility.Hidden;
+            isFirstOperation=true;
+            IsClickOperator=false;
+        }
 
         public MainWindow()
         {
@@ -66,7 +75,7 @@ namespace Calculator1
 
         public bool isFirstOperation { get; set; } = true;
         public bool IsClickOperator { get; set; } = false;
-
+        public bool IsOperator { get; set; } = false;
         private void Button_Equal(object sender, RoutedEventArgs e)
         {
 
@@ -103,6 +112,7 @@ namespace Calculator1
             {
                 LabelDown += btn.Content.ToString();
             }
+            IsOperator=false;
         }
 
         private void Button_Click_Op(object sender, RoutedEventArgs e)
@@ -151,6 +161,7 @@ namespace Calculator1
             BufferLabel.Visibility=Visibility.Visible;
             isFirstOperation=true;
             IsClickOperator = true;
+            IsOperator=true;
         }
 
         private void OnlyUseNum1(object sender, RoutedEventArgs e)
@@ -185,6 +196,54 @@ namespace Calculator1
                 LabelDown +=".";
             }
             
+        }
+
+        private void Click_Delete(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            if(btn is not null)
+            {
+                if(btn.Content.ToString()=="C")
+                {
+                    ReturStartPoint();
+                }
+                else if(btn.Content.ToString()=="CE")
+                {
+                    if (LabelUp.Contains("="))
+                    {
+                        ReturStartPoint();
+                    }
+                    else
+                    {
+                        LabelDown="0";
+                        isFirstOperation=true;
+                    }
+                }
+                else if(btn.Content.ToString()=="←")
+                {
+                    if (LabelUp.Contains("="))
+                    {
+                       
+                        LabelUp="0";
+                        BufferLabel.Visibility=Visibility.Hidden;
+                        isFirstOperation=true;
+                        IsClickOperator=false;
+                    }
+                    else if (BufferLabel.Visibility==Visibility.Hidden || IsOperator==false)
+                    {
+                        if (LabelDown.Length!=1)
+                            LabelDown= LabelDown.Substring(0, LabelDown.Length-1);
+                        else
+                        {
+                            LabelDown="0";
+                            isFirstOperation=true;
+                        }
+
+
+                    }
+                  
+                }
+            }
         }
     }
 }
